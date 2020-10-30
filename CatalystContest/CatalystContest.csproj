@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FileParser" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InputFilesToCopy Include="$(MSBuildThisFileDirectory)\Inputs\*.in" />
+  </ItemGroup>
+
+  <Target Name="CopyInputFilesToOutputDir" AfterTargets="Build">
+    <Copy SourceFiles="@(InputFilesToCopy)" DestinationFolder="$(OutputPath)\Inputs" />
+  </Target>
+
+  <ItemGroup>
+    <Compile Remove="Correct_Outputs\**" />
+    <Compile Remove="Inputs\**" />
+    <EmbeddedResource Remove="Correct_Outputs\**" />
+    <EmbeddedResource Remove="Inputs\**" />
+    <None Remove="Correct_Outputs\**" />
+    <None Remove="Inputs\**" />
+  </ItemGroup>
+
+</Project>
