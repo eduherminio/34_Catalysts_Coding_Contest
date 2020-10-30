@@ -85,8 +85,8 @@ namespace CatalystContest
         private static void SolveLevel6()
         {
             var contest = new Contest_lvl6();
-            //contest.Run("level6_example.in");
-            //contest.Run("level6_1.in");
+            contest.Run("level6_example.in");
+            contest.Run("level6_1.in");
             contest.Run("level6_2.in");
             contest.Run("level6_3.in");
             contest.Run("level6_4.in");

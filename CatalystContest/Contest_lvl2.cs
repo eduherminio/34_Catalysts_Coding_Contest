@@ -21,7 +21,7 @@ namespace CatalystContest
 
                 for (int t = 0; t < input.Price.Count; ++t)
                 {
-                    currentCost += input.Price.ElementAt(t);
+                    currentCost += input.Price[t];
                     counter++;
 
                     if (counter == task.CompletionTime)
@@ -39,7 +39,7 @@ namespace CatalystContest
                     }
                 }
 
-                task.MinuteStartDrawingPower = minStartMinute;
+                task.MinuteDrawingPower = minStartMinute;
             }
 
             using var sw = new StreamWriter($"Output/{level}.out");
@@ -47,7 +47,7 @@ namespace CatalystContest
             sw.WriteLine($"{input.Tasks.Count}");
             foreach (var task in input.Tasks)
             {
-                sw.WriteLine($"{task.Id} {task.MinuteStartDrawingPower}");
+                sw.WriteLine($"{task.Id} {task.MinuteDrawingPower}");
             }
         }
 
@@ -67,11 +67,15 @@ namespace CatalystContest
             {
                 var line = file.NextLine();
 
-                input.Tasks.Add(new Task(line.NextElement<int>(), line.NextElement<int>()));
+                input.Tasks.Add(new Task
+                {
+                    Id = line.NextElement<int>(),
+                    CompletionTime = line.NextElement<int>()
+                });
             }
             if (!file.Empty)
             {
-                throw new Exception("Error parsing file");
+                throw new ParsingException("Error parsing file");
             }
 
             return input;

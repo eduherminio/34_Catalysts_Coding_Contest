@@ -13,8 +13,6 @@ namespace CatalystContest
         {
             var input = ParseInput(level);
 
-
-
             while (true)
             {
                 ulong totalElectricityBill = ulong.MaxValue;
@@ -98,7 +96,7 @@ namespace CatalystContest
             }
             if (!file.Empty)
             {
-                throw new Exception("Error parsing file");
+                throw new ParsingException("Error parsing file");
             }
 
             return input;

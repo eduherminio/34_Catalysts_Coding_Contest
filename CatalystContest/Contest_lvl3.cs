@@ -48,7 +48,7 @@ namespace CatalystContest
             }
             if (!file.Empty)
             {
-                throw new Exception("Error parsing file");
+                throw new ParsingException("Error parsing file");
             }
 
             return input;

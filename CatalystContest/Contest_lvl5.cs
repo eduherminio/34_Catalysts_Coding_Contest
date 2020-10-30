@@ -54,7 +54,6 @@ namespace CatalystContest
                             task.MinutePowerDrawn.Add(realMinuteIndex, powerLeftForMinuteX);
                             totalElectricityBill += Convert.ToUInt64(minute.price) * Convert.ToUInt64(powerLeftForMinuteX);
                         }
-
                     }
                 }
 
@@ -103,7 +102,7 @@ namespace CatalystContest
             }
             if (!file.Empty)
             {
-                throw new Exception("Error parsing file");
+                throw new ParsingException("Error parsing file");
             }
 
             return input;
